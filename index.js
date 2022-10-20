@@ -40,3 +40,27 @@ function twoNumberSum(array, targetSum) {
   }
   return [];
 }
+
+function twoNumberSum(array, targetSum) {
+  // Write your code here.
+  array.sort((a, b) => a - b);
+
+  let leftPointer = 0;
+  let rightPointer = array.length - 1;
+  console.log(array);
+  for (let i = 0; i < array.length, leftPointer < rightPointer; i++) {
+    const currentSum = array[leftPointer] + array[rightPointer];
+    console.log(currentSum);
+    if (currentSum === targetSum) {
+      return [array[leftPointer], array[rightPointer]];
+    } else if (currentSum < targetSum) {
+      leftPointer++;
+      console.log(leftPointer, "left");
+    } else if (currentSum > targetSum) {
+      rightPointer--;
+      console.log(rightPointer, "yeaa");
+    }
+  }
+
+  return [];
+}
