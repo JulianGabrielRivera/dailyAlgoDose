@@ -64,3 +64,24 @@ function twoNumberSum(array, targetSum) {
 
   return [];
 }
+
+// Mock Interview
+// function that returns special array and returns its product sum
+// dept of array
+// array[(5, 2, [7, -1], 3, [6, [-13, 8], 4])];
+
+// 12; // calculated as : 5+2+2*(7-1) + 3 + 2 * (6+3 *(-13+8)+4)
+
+function productSum(array, arrCounter = 1) {
+  let result = 0;
+
+  array.forEach((element) => {
+    if (Array.isArray(element)) {
+      result += productSum(element, arrCounter + 1);
+    } else {
+      result += element;
+    }
+  });
+
+  return result * arrCounter;
+}
