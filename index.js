@@ -136,3 +136,34 @@ function findClosestValueInBstHelper(tree, target, closest) {
   }
   return closest;
 }
+
+// Node Depths
+
+function nodeDepths(root, value = 0) {
+  // Write your code here.
+  if (root === null) return 0;
+
+  return (
+    value + nodeDepths(root.left, value + 1) + nodeDepths(root.right, value + 1)
+  );
+}
+
+// Node Depths 2
+function nodeDepths(root) {
+  // Write your code here.
+  let sumOfDepths = 0;
+
+  const stack = [{ node: root, depth: 0 }];
+
+  while (stack.length > 0) {
+    const { node, depth } = stack.pop();
+
+    if (node === null) continue;
+    sumOfDepths += depth;
+    stack.push({ node: node.left, depth: depth + 1 });
+    stack.push({ node: node.right, depth: depth + 1 });
+
+    console.log(stack);
+  }
+  return sumOfDepths;
+}
