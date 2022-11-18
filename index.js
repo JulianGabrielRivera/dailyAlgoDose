@@ -182,3 +182,24 @@ function minimumWaitingTime(queries) {
   }
   return totalWaitingTime;
 }
+
+// class photos
+
+function classPhotos(redShirtHeights, blueShirtHeights) {
+  // Write your code here.
+
+  redShirtHeights.sort((a, b) => b - a);
+  blueShirtHeights.sort((a, b) => b - a);
+  const shirtColorInFirstRow =
+    redShirtHeights[0] < blueShirtHeights[0] ? "RED" : "BLUE";
+  for (let idx = 0; idx < redShirtHeights.length; idx++) {
+    const redShirtHeight = redShirtHeights[idx];
+    const blueShirtHeight = blueShirtHeights[idx];
+    console.log(blueShirtHeight);
+    if (shirtColorInFirstRow === "RED") {
+      if (redShirtHeight >= blueShirtHeight) return false;
+    } else if (blueShirtHeight >= redShirtHeight) return false;
+  }
+
+  return true;
+}
